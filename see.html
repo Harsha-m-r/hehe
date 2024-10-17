@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Something Special For You ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ffe6e6, #ffd6d6);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #ff4d4d;
+            margin-bottom: 1.5rem;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #666;
+            font-size: 1.5em;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #ff4d4d, #ff6b6b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,77,77,0.3);
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #808080, #9e9e9e);
+            color: white;
+            box-shadow: 0 4px 15px rgba(128,128,128,0.3);
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d4d;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .gif {
+            max-width: 250px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reason-list {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .reason-list li {
+            margin: 10px 0;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .special-text {
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff4d4d, #ff6b6b);
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container" id="mainContainer">
+        <!-- First Page - Greeting -->
+        <div id="page1" class="fade-in">
+            <h1>Hey there! 💖</h1>
+            <img src="gif/200w-ezgif.com-webp-to-gif-converter.gif" alt="Cute greeting gif" class="gif">
+            <h2>I have something special to tell you...</h2>
+            <button class="btn yes-btn" onclick="showPage('page2')">What is it?</button>
+        </div>
+
+        <!-- Second Page - First Question -->
+        <div id="page2" class="hidden">
+            <h1>Well... 🙈</h1>
+            <img src="gif/200w2-ezgif.com-webp-to-gif-converter.gif" alt="Shy gif" class="gif">
+            <h2>Do you believe in love at first sight?</h2>
+            <button class="btn yes-btn" onclick="showPage('page3')">Yes</button>
+            <button class="btn no-btn" onclick="showPage('page3')">No</button>
+        </div>
+
+        <!-- Third Page - Compliment -->
+        <div id="page3" class="hidden">
+            <h1>You know what? ✨</h1>
+            <img src="gif/100-ezgif.com-webp-to-gif-converter.gif" alt="Sparkle gif" class="gif">
+            <h2>Every time I see you, you make my day brighter!</h2>
+            <div class="reason-list">
+                <ul>
+                    <li>Your smile lights up the room</li>
+                    <li>Your kindness touches hearts</li>
+                    <li>Your presence makes everything better</li>
+                </ul>
+            </div>
+            <button class="btn yes-btn" onclick="showPage('page4')">Aww, continue...</button>
+        </div>
+
+        <!-- Fourth Page - Confession -->
+        <div id="page4" class="hidden">
+            <h1>I need to confess... 💝</h1>
+            <img src="gif/200w2-ezgif.com-webp-to-gif-converter.gif" alt="Heart gif" class="gif">
+            <h2>I really like you!</h2>
+            <button class="btn yes-btn" onclick="showPage('page5')">Really?</button>
+            <button class="btn no-btn" onclick="showPage('page5')">Are you sure?</button>
+        </div>
+
+        <!-- Fifth Page - Question -->
+        <div id="page5" class="hidden">
+            <h1>Yes, I'm sure! 💫</h1>
+            <img src="gif/200w3-ezgif.com-webp-to-gif-converter.gif" alt="Stars gif" class="gif">
+            <h2>Would you give me a chance?</h2>
+            <button class="btn yes-btn" onclick="showPage('page6')">Of course!</button>
+            <button class="btn no-btn" onclick="showPage('page5_1')">No...</button>
+        </div>
+
+        <!-- Fifth Page Alternative - If No -->
+        <div id="page5_1" class="hidden">
+            <h1>Wait... 🥺</h1>
+            <img src="gif/1002-ezgif.com-webp-to-gif-converter.gif" alt="Sad gif" class="gif">
+            <h2>Really? You don't want to give us a chance?</h2>
+            <button class="btn yes-btn" onclick="showPage('page6')">Ok, I'll give it a chance</button>
+            <button class="btn no-btn" onclick="showPage('page5_2')">Still no</button>
+        </div>
+
+        <!-- Fifth Page Alternative 2 - Second No -->
+        <div id="page5_2" class="hidden">
+            <h1>Before you decide... 💭</h1>
+            <img src="gif/200w5-ezgif.com-webp-to-gif-converter.gif" alt="Thinking gif" class="gif">
+            <h2>Think about all the fun we could have together!</h2>
+            <div class="reason-list">
+                <ul>
+                    <li>Going on adventures</li>
+                    <li>Sharing laughs and stories</li>
+                    <li>Making beautiful memories</li>
+                    <li>Supporting each other</li>
+                </ul>
+            </div>
+            <button class="btn yes-btn" onclick="showPage('page6')">You're right, let's try!</button>
+        </div>
+
+        <!-- Sixth Page - Final Question -->
+        <div id="page6" class="hidden">
+            <h1>You've made me so happy! 🌟</h1>
+            <img src="gif/200w6-ezgif.com-webp-to-gif-converter.gif" alt="Happy gif" class="gif">
+            <h2>Would you like to go out with me?</h2>
+            <div class="progress-bar">
+                <div id="progressBar" class="progress"></div>
+            </div>
+            <button class="btn yes-btn" onclick="showFinal()">Yes, I'd love to!</button>
+            <button class="btn no-btn" onclick="showPage('page6_1')">No</button>
+        </div>
+
+        <!-- Sixth Page Alternative - If No -->
+        <div id="page6_1" class="hidden">
+            <h1>One Last Thing... 💫</h1>
+            <img src="gif/200w3-ezgif.com-webp-to-gif-converter.gif" alt="Magic gif" class="gif">
+            <h2>I promise to make it special!</h2>
+            <p class="special-text">Just one date to show you how much you mean to me...</p>
+            <button class="btn yes-btn" onclick="showFinal()">Ok, let's go out!</button>
+        </div>
+
+        <!-- Final Page -->
+        <div id="finalPage" class="hidden">
+            <h1>YAY! 🎉</h1>
+            <img src="gif/200w7-ezgif.com-webp-to-gif-converter.gif" alt="Celebration gif" class="gif">
+            <h2>You've made me the happiest person!</h2>
+            <p class="special-text">I can't wait to make wonderful memories with you! ❤️</p>
+            <div id="dateIdeas" class="reason-list">
+                <h3>Date ideas:</h3>
+                <ul>
+                    <li>A cozy coffee date ☕</li>
+                    <li>A walk in the park 🌳</li>
+                    <li>Watch the sunset together 🌅</li>
+                    <li>Your choice! 💝</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.container > div').forEach(div => {
+                div.classList.add('hidden');
+            });
+            const newPage = document.getElementById(pageId);
+            newPage.classList.remove('hidden');
+            newPage.classList.add('fade-in');
+            
+            if (pageId === 'page6') {
+                animateProgress();
+            }
+        }
+
+        function animateProgress() {
+            const progress = document.getElementById('progressBar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progress.style.width = width + '%';
+                }
+            }, 30);
+        }
+
+        function showFinal() {
+            document.getElementById('hearts').style.display = 'block';
+            showPage('finalPage');
+            createHearts();
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
