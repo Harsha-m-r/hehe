@@ -233,16 +233,33 @@
         </div>
 
         <!-- Sixth Page - Final Question -->
-        <div id="page6" class="hidden">
-            <h1>You've made me so happy! 🌟</h1>
-            <img src="gif/200w6-ezgif.com-webp-to-gif-converter.gif" alt="Happy gif" class="gif">
-            <h2>Would you like to go out with me?</h2>
-            <div class="progress-bar">
-                <div id="progressBar" class="progress"></div>
-            </div>
-            <button class="btn yes-btn" onclick="showFinal()">Yes, I'd love to!</button>
-            <button class="btn no-btn" onclick="showPage('page6_1')">No</button>
-        </div>
+<div id="page6" class="hidden">
+    <h1>You've made me so happy! 🌟</h1>
+    <img src="gif/200w6-ezgif.com-webp-to-gif-converter.gif" alt="Happy gif" class="gif">
+    <h2>Would you like to go out with me?</h2>
+    <div class="progress-bar">
+        <div id="progressBar" class="progress"></div>
+    </div>
+    <button class="btn yes-btn" onclick="showFinal()">Yes, I'd love to!</button>
+    <button class="btn no-btn" id="noBtn" onmouseover="flyAway()">No</button>
+</div>
+
+<script>
+    function flyAway() {
+        const button = document.getElementById('noBtn');
+        const container = document.querySelector('.container');
+        
+        // Get random x and y positions within the container bounds
+        const randomX = Math.random() * (container.clientWidth - button.clientWidth);
+        const randomY = Math.random() * (container.clientHeight - button.clientHeight);
+        
+        // Apply the new random position
+        button.style.position = 'absolute';
+        button.style.left = `${randomX}px`;
+        button.style.top = `${randomY}px`;
+    }
+</script>
+
 
         <!-- Sixth Page Alternative - If No -->
         <div id="page6_1" class="hidden">
